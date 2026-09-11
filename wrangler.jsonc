@@ -1,0 +1,11 @@
+{
+  "name": "lamura",
+  "compatibility_date": "2026-09-10",
+  "build": {
+    "command": "npm ci --prefix website --no-audit --no-fund && npm run build --prefix website"
+  },
+  "assets": {
+    "directory": "./website/dist/client",
+    "not_found_handling": "single-page-application"
+  }
+}
