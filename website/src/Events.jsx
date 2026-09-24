@@ -15,7 +15,7 @@ export function EventPoster({lang}) {
   const t = eventCopy[lang];
   return <section className="event-poster shell" aria-labelledby="event-poster-title">
     <a className="event-poster-link" href="/eventi" aria-label={`${t.explore}: London Fashion Week — Proverbs of Love`}>
-      <div className="event-poster-image"><EventImage id={366} alt={t.alts[366]} priority sizes="(min-width: 901px) 100vw, 88vw"/></div>
+      <div className="event-poster-image"><EventImage id={366} alt={t.alts[366]} priority sizes="(min-width: 901px) min(100vw, calc((100svh - 74px) * 1.5)), 100vw"/></div>
       <div className="event-poster-copy"><p className="eyebrow">LONDON FASHION WEEK · SS27</p><h2 id="event-poster-title">Proverbs of Love</h2><span className="event-poster-cta">{t.explore}<span aria-hidden="true">↗</span></span></div>
     </a>
   </section>;

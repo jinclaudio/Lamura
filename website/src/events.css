@@ -110,3 +110,13 @@
   #home h1{font-size:clamp(38px,3.5vw,56px)}
   #home .hero-bottom{display:none}
 }
+
+/* Mobile cover uses the full screen width without cropping the photograph. */
+@media(max-width:900px){
+  .event-poster.shell{padding:74px 0 0}
+  .event-poster .event-poster-image{width:100%;max-width:none;margin:0}
+  .event-poster .event-poster-image img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;transform:none}
+  .event-poster .event-poster-copy{padding:24px var(--gutter) 32px;border:0}
+  .event-poster .event-poster-copy h2{padding-right:0}
+  .event-poster .event-poster-cta{position:static;display:inline-flex;margin-top:24px}
+}
