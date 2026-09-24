@@ -23,7 +23,7 @@ Photography: avoid repeating photos across editorial sections and pages, and avo
 
 Navigation has three page links: Collezione / Collection, Eventi / Events, and Chi siamo / About us. Do not add a separate Contatti / Contact navigation item; contact details remain within About Us.
 
-London event direction: add a large clickable poster after the home forest hero linking directly to /eventi. The user requires images/伦敦时装秀/图片_20260924090229_366_993.jpg as the main photograph. Use it on both the homepage poster and event opening; this intentional repeat identifies the event. Preserve natural color and both foreground models. Continue black/white/gray editorial design and IT/EN localization. Other event photographs may be selected editorially; do not imply the supplied photos document all ten distinct looks. Keep originals unchanged; serve responsive, EXIF-normalized WebP derivatives.
+London event direction: place a large clickable poster at the top of the homepage, before the forest hero linking directly to /eventi. The user requires images/伦敦时装秀/图片_20260924090229_366_993.jpg as the main photograph. Use it on both the homepage poster and event opening; this intentional repeat identifies the event. Preserve natural color and both foreground models. Continue black/white/gray editorial design and IT/EN localization. Other event photographs may be selected editorially; do not imply the supplied photos document all ten distinct looks. Keep originals unchanged; serve responsive, EXIF-normalized WebP derivatives.
 
 Desktop event layout: constrain editorial content to 1200px; bound portrait images by viewport height so full outfits can be viewed without scrolling through an oversized image. Keep paired images nearly aligned (at most 24px offset), preserve original aspect ratios and avoid cropping to achieve the height limit. User prefers local npm development only; do not upload or publish.
 
@@ -32,3 +32,9 @@ Designer section: user supplied the brand biography and identified YANG in image
 About page consistency: brand history and designer profile share a 1200px content grid, equal columns, 64px desktop section padding/gap, matching heading scale, and image frames capped at min(64svh,620px). Preserve photographs with object-fit:contain rather than cropping; do not let the older brand story expand to full ultrawide width while the designer remains narrow.
 
 Mobile materials section: image, eyebrow, heading, body and collection link must share the same left edge and full available content width. Do not apply the former 85% image width or 10% text indent on mobile.
+
+Homepage order: London show poster first, forest brand hero second, then materials and collection. Use the solid light shared header above the opening poster and reserve mobile/desktop top padding for it.
+
+Homepage desktop cover (latest user-approved direction): above 900px use full-bleed photo 366, displayed uncropped at its native 3:2 aspect ratio, fitting entirely in the viewport below the 74px navigation. Center the image at width:min(100%,calc((100svh - 74px) * 1.5)); side whitespace is intentional and full-width filling is not required, with white title and event link overlaid at bottom left and a restrained dark bottom gradient. Use object-fit:contain and disable hover zoom so the entire photograph remains visible. Follow with a lower full-bleed forest brand section (62svh). Mobile keeps the complete 3:2 photo with text below. This replaces the previous split-column and magazine-cover proposals.
+
+Homepage desktop side fill: use a softly blurred, low-opacity version of photo 366 behind the centered uncropped main image to fill lateral whitespace. Keep the foreground image and overlay text sharp; this background is decorative and desktop-only.
