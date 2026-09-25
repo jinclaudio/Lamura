@@ -19,8 +19,102 @@ export function EventPoster({lang}) {
 export function Events({lang}) {
   const t = eventCopy[lang];
   const [active, setActive] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+  const userPausedRef = useRef(false);
   const dialog = useRef(null);
   const opener = useRef(null);
+
+  useEffect(() => {
+    const audio = new Audio('/audio/LAMURA.mp3');
+    audio.loop = true;
+    audio.preload = 'auto';
+    audioRef.current = audio;
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+
+    let removeListeners = null;
+
+    const startAudio = () => {
+      if (userPausedRef.current) return;
+      audio.volume = 0;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          let vol = 0;
+          const targetVol = 0.75;
+          const timer = setInterval(() => {
+            if (!audioRef.current || audio.paused) {
+              clearInterval(timer);
+              return;
+            }
+            vol = Math.min(targetVol, vol + 0.05);
+            audio.volume = vol;
+            if (vol >= targetVol) clearInterval(timer);
+          }, 60);
+        }).catch(() => {
+          // Autoplay policy prevented playback. Start on first interaction anywhere.
+          const unlock = () => {
+            if (!userPausedRef.current && audioRef.current && audioRef.current.paused) {
+              audioRef.current.play().then(() => {
+                let vol = 0;
+                const targetVol = 0.75;
+                const timer = setInterval(() => {
+                  if (!audioRef.current || audio.paused) {
+                    clearInterval(timer);
+                    return;
+                  }
+                  vol = Math.min(targetVol, vol + 0.05);
+                  audio.volume = vol;
+                  if (vol >= targetVol) clearInterval(timer);
+                }, 60);
+              }).catch(() => {});
+            }
+            cleanup();
+          };
+
+          const cleanup = () => {
+            window.removeEventListener('pointerdown', unlock);
+            window.removeEventListener('scroll', unlock);
+            window.removeEventListener('keydown', unlock);
+          };
+
+          window.addEventListener('pointerdown', unlock, {once: true, passive: true});
+          window.addEventListener('scroll', unlock, {once: true, passive: true});
+          window.addEventListener('keydown', unlock, {once: true, passive: true});
+          removeListeners = cleanup;
+        });
+      }
+    };
+
+    startAudio();
+
+    return () => {
+      if (removeListeners) removeListeners();
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
+      audio.pause();
+      audio.src = '';
+      audioRef.current = null;
+    };
+  }, []);
+
+  const toggleSoundtrack = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      userPausedRef.current = false;
+      audio.volume = 0.75;
+      audio.play().catch(() => {});
+    } else {
+      userPausedRef.current = true;
+      audio.pause();
+    }
+  };
+
   useEffect(() => {if (active !== null && !dialog.current.open) dialog.current.showModal();}, [active]);
   const close = () => {dialog.current.close(); setActive(null); opener.current?.focus();};
   const move = direction => setActive(index => (index + direction + photoIds.length) % photoIds.length);
@@ -32,6 +126,21 @@ export function Events({lang}) {
     </figure>;
   }
   return <article className="event-page">
+    <button
+      type="button"
+      className={`event-audio-toggle ${isPlaying ? 'is-playing' : ''}`}
+      onClick={toggleSoundtrack}
+      aria-label={isPlaying ? t.pauseAudio : t.playAudio}
+      title={isPlaying ? t.pauseAudio : t.playAudio}
+    >
+      <span className="event-audio-bars" aria-hidden="true">
+        <span className="bar" />
+        <span className="bar" />
+        <span className="bar" />
+        <span className="bar" />
+      </span>
+      <span className="event-audio-label">{t.soundtrackOn}</span>
+    </button>
     <section className="event-opening shell" aria-labelledby="event-title">
       <div className="event-edition"><span>{t.events} / London Fashion Week</span><span>{t.season}</span></div>
       <h1 id="event-title">Proverbs of Love</h1>

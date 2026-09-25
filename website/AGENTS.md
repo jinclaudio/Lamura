@@ -42,3 +42,6 @@ Homepage desktop cover (latest user-approved direction): above 900px use full-bl
 Homepage desktop side fill: use a softly blurred, low-opacity version of photo 366 behind the centered uncropped main image to fill lateral whitespace. Keep the foreground image and overlay text sharp; this background is decorative and desktop-only.
 
 Mobile homepage cover refinement: photo 366 goes edge-to-edge at full viewport width beneath the header, retaining its complete 3:2 aspect ratio. Remove photo gutters and excess top whitespace; keep normal horizontal padding for the text below. No mobile crop or hover zoom.
+
+Runway soundtrack: plays automatically on the London Fashion Week show page (/eventi). The master 105.8MB FLAC audio file is optimized into a 160kbps MP3 (public/audio/LAMURA.mp3, 6.8MB) for rapid web streaming. Ambient audio fades in on load, falling back to first user touch/click/scroll if blocked by browser autoplay restrictions. A minimal floating bottom-right toggle allows manual control with animated soundwave bars; audio automatically stops when navigating away.
+
