@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LAMURA 品牌介绍 / Brand Presentation</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      --paper: #f3f1eb;
+      --paper-deep: #e9e5dc;
+      --ink: #181817;
+      --muted: #74716b;
+      --line: #c9c5bb;
+      --night: #1b1b1a;
+      --night-soft: #2a2926;
+      --white: #f8f7f3;
+      --warm: #b6a58d;
+      --serif: Georgia, "Times New Roman", "SimSun", "Noto Serif CJK SC", serif;
+      --sans: Arial, "Helvetica Neue", "SimHei", "Noto Sans CJK SC", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #cbc9c3; color: var(--ink); }
+    body { font-family: var(--sans); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      background: var(--paper);
+      break-after: page;
+      page-break-after: always;
+      isolation: isolate;
+    }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+    .inner { position: relative; height: 100%; padding: 20mm 18mm 17mm; }
+    .bleed { padding: 0; }
+    .dark { background: var(--night); color: var(--white); }
+    .dark .muted { color: #aaa69e; }
+    .dark .line { border-color: #4a4843; }
+    .eyebrow {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 8.5px;
+      line-height: 1.35;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .eyebrow .cn { letter-spacing: .14em; }
+    .serif { font-family: var(--serif); }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    h1 { font-size: 47px; line-height: 1.14; letter-spacing: -.04em; }
+    h2 { font-size: 35px; line-height: 1.22; letter-spacing: -.035em; }
+    h3 { font-size: 21px; line-height: 1.3; }
+    .en {
+      font-family: var(--sans);
+      font-size: 8.5px;
+      line-height: 1.45;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .body-cn { font-size: 12px; line-height: 1.9; letter-spacing: .015em; }
+    .body-en { font-family: var(--sans); font-size: 9.5px; line-height: 1.65; color: var(--muted); letter-spacing: .005em; }
+    .body-en.light { color: #d5d0c7; }
+    .muted { color: var(--muted); }
+    .line { border-color: var(--line); }
+    .rule { height: 1px; background: var(--line); }
+    .dark .rule { background: #4a4843; }
+    .footer {
+      position: absolute;
+      left: 18mm;
+      right: 18mm;
+      bottom: 8.5mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 7px;
+      line-height: 1;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .dark .footer { color: #aaa69e; }
+    .footer .page-no { font-family: var(--serif); font-size: 12px; letter-spacing: .02em; }
+    .footer .mark { letter-spacing: .24em; }
+    .logo { width: 31mm; height: auto; display: block; }
+    .logo.invert { filter: brightness(0) invert(1); }
+    .topline { display: flex; align-items: center; justify-content: space-between; }
+    .topline .rule { flex: 1; margin: 0 5mm; }
+    .section-index { font-family: var(--serif); font-size: 12px; color: var(--muted); }
+    .dark .section-index { color: #aaa69e; }
+    .photo { position: relative; overflow: hidden; background: #d3d0c9; }
+    .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 6mm 4mm 3mm; color: #fff; font-size: 7px; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; background: linear-gradient(transparent, rgba(0,0,0,.55)); }
+    .dark .photo { background: #30302e; }
+    .photo.cover-photo { position: absolute; inset: 0; }
+    .cover-photo img { object-position: center 45%; }
+    .cover-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,8,.32) 0%, rgba(8,8,8,.04) 36%, rgba(8,8,8,.7) 100%); }
+    .cover .topline { position: absolute; top: 15mm; left: 18mm; right: 18mm; z-index: 2; color: #fff; }
+    .cover .topline .rule { background: rgba(255,255,255,.55); }
+    .cover .topline .en { color: #f2efe8; }
+    .cover .cover-copy { position: absolute; left: 18mm; right: 18mm; bottom: 28mm; z-index: 2; color: #fff; }
+    .cover .cover-copy .eyebrow { margin-bottom: 9mm; color: #f1eee7; }
+    .cover h1 { max-width: 145mm; font-size: 57px; line-height: 1.08; }
+    .cover h1 .quiet { color: #d7d1c7; }
+    .cover .cover-en { margin-top: 5mm; font-family: var(--serif); font-size: 19px; letter-spacing: .01em; }
+    .cover .cover-sub { display: flex; align-items: center; gap: 5mm; margin-top: 13mm; font-size: 8px; letter-spacing: .15em; text-transform: uppercase; }
+    .cover .cover-sub::before { content: ""; width: 18mm; height: 1px; background: rgba(255,255,255,.7); }
+    .cover .side-note { position: absolute; right: 8mm; top: 50%; z-index: 2; writing-mode: vertical-rl; color: rgba(255,255,255,.76); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
+    .cover .bottom-mark { position: absolute; left: 18mm; bottom: 9mm; z-index: 2; color: rgba(255,255,255,.78); font-size: 7px; letter-spacing: .15em; }
+    .cover .page-no { position: absolute; right: 18mm; bottom: 8mm; z-index: 2; color: rgba(255,255,255,.85); font-family: var(--serif); font-size: 12px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 11mm; }
+    .core-title { margin-top: 16mm; }
+    .core-title .en { display: block; margin-top: 6mm; color: var(--muted); }
+    .core-intro { margin-top: 9mm; max-width: 116mm; }
+    .positioning { margin-top: 11mm; padding: 4mm 0 3.5mm; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 43mm 1fr; column-gap: 6mm; align-items: center; }
+    .positioning .label { font-size: 7px; line-height: 1.3; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .positioning .statement { font-family: var(--serif); font-size: 14px; line-height: 1.35; }
+    .positioning .statement small { display: block; margin-top: 2mm; font-family: var(--sans); font-size: 7px; line-height: 1.3; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .core-intro .body-cn { font-size: 14px; line-height: 1.95; }
+    .core-intro .body-en { margin-top: 5mm; max-width: 110mm; }
+    .core-visual { position: absolute; right: 18mm; bottom: 20mm; width: 66mm; height: 106mm; }
+    .core-visual img { object-position: center 42%; }
+    .core-visual figcaption { position: absolute; left: 0; right: 0; bottom: -10mm; color: var(--muted); font-size: 7px; line-height: 1.3; letter-spacing: .1em; text-transform: uppercase; background: none; }
+    .stats { position: absolute; left: 18mm; bottom: 25mm; display: flex; gap: 4mm; }
+    .stat { width: 32mm; border-top: 1px solid var(--ink); padding-top: 3mm; }
+    .stat strong { display: block; font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1; }
+    .stat span { display: block; margin-top: 2mm; font-size: 6px; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .core-footer-note { position: absolute; left: 18mm; right: 100mm; bottom: 18mm; font-size: 7px; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .heritage .topline { margin-bottom: 13mm; }
+    .heritage h2 { max-width: 118mm; }
+    .heritage h2 .en { display: block; margin-top: 6mm; color: var(--muted); }
+    .heritage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 14mm; }
+    .heritage-photo { height: 103mm; }
+    .heritage-photo img { object-position: center 47%; }
+    .heritage-copy { padding-top: 5mm; }
+    .heritage-copy .body-cn { margin-top: 9mm; }
+    .heritage-copy .body-en { margin-top: 5mm; }
+    .heritage-material { position: absolute; left: 18mm; right: 18mm; bottom: 48mm; padding-top: 4mm; border-top: 1px solid var(--line); display: grid; grid-template-columns: 43mm 1fr; gap: 6mm; }
+    .heritage-material .label { font-size: 7px; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; color: var(--muted); }
+    .heritage-material p { font-family: var(--serif); font-size: 16px; line-height: 1.35; }
+    .heritage-material small { display: block; margin-top: 2mm; font-family: var(--sans); font-size: 7px; line-height: 1.3; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .timeline { position: absolute; left: 18mm; right: 18mm; bottom: 19mm; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid var(--line); padding-top: 4mm; }
+    .timeline-item { position: relative; padding-right: 7mm; }
+    .timeline-item + .timeline-item { padding-left: 7mm; border-left: 1px solid var(--line); }
+    .timeline-item strong { display: block; font-family: var(--serif); font-size: 19px; font-weight: 400; }
+    .timeline-item span { display: block; margin-top: 2mm; font-size: 7px; line-height: 1.35; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .lines { position: relative; padding: 20mm 18mm 17mm; }
+    .lines .topline { color: #e9e5dc; }
+    .lines .topline .rule { background: #4a4843; }
+    .lines .section-label { margin-top: 15mm; }
+    .lines h2 { margin-top: 7mm; color: #f6f3ec; }
+    .lines h2 .en { display: block; margin-top: 6mm; color: #aaa69e; }
+    .line-list { position: absolute; left: 18mm; right: 18mm; top: 87mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 12mm; }
+    .line-card { min-height: 45mm; border-top: 1px solid #5a5751; padding: 5mm 0 7mm; display: grid; grid-template-columns: 11mm 1fr; gap: 4mm; }
+    .line-card:nth-child(2), .line-card:nth-child(4) { border-bottom: 0; }
+    .line-card .num { font-family: var(--serif); font-size: 15px; color: #aaa69e; }
+    .line-card h3 { font-family: var(--serif); color: #f6f3ec; font-size: 19px; margin-bottom: 3mm; }
+    .line-card p { font-size: 8px; line-height: 1.5; color: #aaa69e; letter-spacing: .02em; }
+    .line-card .tag { display: block; margin-top: 4mm; font-size: 6.5px; letter-spacing: .15em; text-transform: uppercase; color: #8e897e; }
+    .lines .quote { position: absolute; left: 18mm; right: 18mm; bottom: 20mm; display: flex; justify-content: space-between; align-items: end; border-top: 1px solid #4a4843; padding-top: 4mm; }
+    .lines .quote p { max-width: 120mm; font-family: var(--serif); font-size: 14px; line-height: 1.45; color: #d8d3ca; }
+    .lines .quote .en { color: #aaa69e; text-align: right; }
+    .collection-cover .photo { position: absolute; inset: 0; }
+    .collection-cover .photo img { object-position: center 43%; }
+    .collection-cover .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.08) 44%, rgba(0,0,0,.78)); }
+    .collection-cover .topline { position: absolute; z-index: 2; top: 15mm; left: 18mm; right: 18mm; color: #fff; }
+    .collection-cover .topline .rule { background: rgba(255,255,255,.55); }
+    .collection-cover .copy { position: absolute; z-index: 2; left: 18mm; right: 18mm; bottom: 28mm; color: #fff; }
+    .collection-cover .copy .eyebrow { margin-bottom: 7mm; }
+    .collection-cover h1 { max-width: 165mm; font-size: 57px; }
+    .collection-cover .sub { margin-top: 5mm; font-family: var(--serif); font-size: 19px; }
+    .collection-cover .credit { display: flex; gap: 5mm; margin-top: 12mm; font-size: 7px; letter-spacing: .15em; text-transform: uppercase; }
+    .collection-cover .credit span { color: #cbc7be; }
+    .collection-cover .vertical { position: absolute; z-index: 2; top: 50%; right: 8mm; writing-mode: vertical-rl; font-size: 7px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+    .story { background: var(--paper-deep); }
+    .story .topline { margin-bottom: 12mm; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; align-items: start; }
+    .story-copy { padding-top: 4mm; }
+    .story-copy h2 { margin-top: 7mm; }
+    .story-copy h2 .en { display: block; margin-top: 6mm; color: var(--muted); }
+    .story-copy .body-cn { margin-top: 11mm; font-size: 13px; }
+    .story-copy .body-en { margin-top: 5mm; }
+    .story-photo-main { height: 150mm; }
+    .story-photo-main img { object-position: center 44%; }
+    .story-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; margin-top: 9mm; }
+    .story-secondary .photo { height: 67mm; }
+    .story-secondary .photo:first-child img { object-position: center 42%; }
+    .story-secondary .photo:last-child img { object-position: center 43%; }
+    .story-quote { position: absolute; left: 18mm; bottom: 22mm; width: 75mm; font-family: var(--serif); font-size: 18px; line-height: 1.45; }
+    .story-quote small { display: block; margin-top: 4mm; font-family: var(--sans); font-size: 7px; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .details { background: var(--paper); }
+    .details .topline { margin-bottom: 12mm; }
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+    .details-grid .photo { height: 113mm; }
+    .details-grid .photo:first-child img { object-position: center 40%; }
+    .details-grid .photo:last-child img { object-position: center 48%; }
+    .details-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 10mm; align-items: start; }
+    .details-copy h2 { font-size: 30px; }
+    .details-copy h2 .en { display: block; margin-top: 5mm; color: var(--muted); }
+    .details-copy .body-cn { padding-top: 1mm; }
+    .details-copy .body-en { padding-top: 1mm; }
+    .details-tag { display: flex; gap: 5mm; margin-top: 13mm; font-size: 7px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+    .details-tag span { padding: 2mm 3mm; border: 1px solid var(--line); }
+    .details .footer { color: var(--muted); }
+    .runway { background: var(--night); }
+    .runway .topline { color: #f6f3ec; }
+    .runway .topline .rule { background: #4a4843; }
+    .runway-intro { display: flex; justify-content: space-between; align-items: end; margin-top: 13mm; }
+    .runway-intro h2 { max-width: 110mm; color: #f6f3ec; }
+    .runway-intro h2 .en { display: block; margin-top: 6mm; color: #aaa69e; }
+    .runway-intro .runway-copy { width: 56mm; padding-bottom: 2mm; }
+    .runway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; margin-top: 13mm; }
+    .runway-grid .photo { height: 137mm; }
+    .runway-grid .photo:first-child img { object-position: center 46%; }
+    .runway-grid .photo:last-child img { object-position: center 48%; }
+    .runway .credit { display: flex; justify-content: space-between; margin-top: 8mm; padding-top: 4mm; border-top: 1px solid #4a4843; font-size: 7px; letter-spacing: .14em; text-transform: uppercase; color: #aaa69e; }
+    .designer { background: var(--paper); }
+    .designer .topline { margin-bottom: 12mm; }
+    .designer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; align-items: start; }
+    .designer-photo { height: 168mm; }
+    .designer-photo img { object-position: center 38%; }
+    .designer-copy { padding-top: 5mm; }
+    .designer-copy h2 { margin-top: 7mm; font-size: 52px; }
+    .designer-copy .role { margin-top: 2mm; font-size: 8px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+    .designer-copy .body-cn { margin-top: 12mm; font-size: 13px; }
+    .designer-copy .body-en { margin-top: 5mm; }
+    .designer-copy .portfolio-title { margin-top: 13mm; padding-top: 4mm; border-top: 1px solid var(--line); font-family: var(--serif); font-size: 18px; }
+    .designer-copy .portfolio-title span { display: block; margin-top: 2mm; font-family: var(--sans); font-size: 7px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+    .designer-note { position: absolute; right: 18mm; bottom: 22mm; width: 80mm; text-align: right; font-family: var(--serif); font-size: 17px; line-height: 1.45; }
+    .closing { background: var(--night); color: var(--white); }
+    .closing .topline { position: absolute; top: 15mm; left: 18mm; right: 18mm; color: #f6f3ec; }
+    .closing .topline .rule { background: #4a4843; }
+    .closing-visual { position: absolute; inset: 0; opacity: .42; }
+    .closing-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+    .closing-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,19,.45), rgba(20,20,19,.78) 70%, rgba(20,20,19,.95)); }
+    .closing .closing-copy { position: absolute; z-index: 2; left: 18mm; right: 18mm; bottom: 23mm; }
+    .closing h2 { max-width: 130mm; font-size: 41px; line-height: 1.17; }
+    .closing h2 .en { display: block; margin-top: 5mm; font-size: 14px; letter-spacing: .02em; text-transform: none; color: #d4cfc6; }
+    .closing .closing-rule { width: 28mm; height: 1px; margin: 13mm 0 9mm; background: #aaa69e; }
+    .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 13mm; }
+    .contact-grid .label { display: block; margin-bottom: 3mm; font-size: 7px; letter-spacing: .16em; text-transform: uppercase; color: #aaa69e; }
+    .contact-grid .value { display: block; font-family: var(--serif); font-size: 15px; line-height: 1.45; }
+    .contact-grid .value a { color: inherit; text-decoration: none; }
+    .closing .footer { color: #aaa69e; }
+    .closing .page-no { color: #d9d3ca; }
+    @media screen {
+      .page { margin: 12mm auto; box-shadow: 0 2mm 8mm rgba(0,0,0,.18); }
+    }
+    @media print {
+      html, body { background: #fff; }
+      .page { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 01 Cover -->
+  <section class="page cover bleed">
+    <div class="photo cover-photo"><img src="assets/london-366.jpg" alt="LAMURA SS27 London Fashion Week"></div>
+    <div class="topline">
+      <img class="logo invert" src="assets/lamura-logo.svg" alt="LAMURA">
+      <div class="rule"></div>
+      <span class="en">NAPOLI · 1989</span>
+    </div>
+    <div class="cover-copy">
+      <p class="eyebrow"><span class="cn">品牌介绍</span> / BRAND PRESENTATION</p>
+      <h1>经典，<br><span class="quiet">成于日常。</span></h1>
+      <p class="cover-en">Timeless, made to live.</p>
+      <div class="cover-sub"><span>品牌与系列概览 / Brand &amp; Collection Overview</span></div>
+    </div>
+    <div class="side-note">LAMURA · A LIVING HERITAGE</div>
+    <div class="bottom-mark">LAMURA / NAPOLI / 1989</div>
+    <div class="page-no">01</div>
+  </section>
+
+  <!-- 02 Brand core -->
+  <section class="page core">
+    <div class="inner">
+      <div class="topline">
+        <span class="section-index">01 / 品牌核心</span><div class="rule"></div><span class="en">THE BRAND</span>
+      </div>
+      <div class="core-title">
+        <p class="eyebrow">LAMURA · NAPOLI · 1989</p>
+        <h1>一个品牌，<br><span class="muted">四种表达。</span></h1>
+        <span class="en">One name. Four expressions.</span>
+      </div>
+      <div class="positioning">
+        <div class="label">复合品牌定位<br>COMPOSITE BRAND POSITIONING</div>
+        <div class="statement">根植那不勒斯的制衣传统，<br>以经典衣橱回应当代自由。<small>Neapolitan craft × an everyday wardrobe × contemporary freedom</small></div>
+      </div>
+      <div class="core-intro">
+        <p class="body-cn">LAMURA 始于 1989 年意大利那不勒斯，源自底蕴深厚的制衣家族。精湛的手工技艺、经典优质的面料，以及对日常穿着的珍视，构成品牌的根基。</p>
+        <p class="body-en">Founded in Naples in 1989, LAMURA carries on the legacy of a time-honoured garment-making family. Masterful hand-craftsmanship, timeless premium fabrics and a devotion to everyday life form the heart of the brand.</p>
+      </div>
+      <div class="photo core-visual"><img src="assets/brand-cardigan.jpg" alt="LAMURA woman in a long navy cardigan"><figcaption>Quiet elegance / 自然的优雅</figcaption></div>
+      <div class="stats">
+        <div class="stat"><strong>1989</strong><span>Neapolitan origin / 那不勒斯起源</span></div>
+        <div class="stat"><strong>04</strong><span>Complete lines / 完整产品线</span></div>
+        <div class="stat"><strong>10</strong><span>SS27 looks / 二〇二七春夏造型</span></div>
+      </div>
+      <p class="core-footer-note">A family tradition. A way of being.<br>一个家族的传统，一种穿衣方式。</p>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · BRAND PRESENTATION</span><span class="page-no">02</span></div>
+  </section>
+
+  <!-- 03 Heritage -->
+  <section class="page heritage">
+    <div class="inner">
+      <div class="topline">
+        <span class="section-index">02 / 品牌谱系</span><div class="rule"></div><span class="en">A LIVING HERITAGE</span>
+      </div>
+      <p class="eyebrow">THE STORY</p>
+      <h2>从那不勒斯出发，<br><span class="muted">把时间穿在身上。</span></h2>
+      <span class="en">It begins in Naples. Time, worn beautifully.</span>
+      <div class="heritage-grid">
+        <figure class="photo heritage-photo"><img src="assets/brand-fabric-dark.jpg" alt="LAMURA fabric and garment detail"><figcaption>NAPOLI / SINCE 1989</figcaption></figure>
+        <div class="heritage-copy">
+          <p class="body-cn">LAMURA 的故事始于一个悠久的制衣家族。品牌不以喧哗的方式存在，而是把时间交给面料，把细节交给双手，把经典交给每一位穿着者。</p>
+          <p class="body-en">LAMURA began with a family tradition in making clothes. The brand lives quietly through its fabrics, its hands and the classics it creates to be worn, not just displayed.</p>
+          <div class="rule" style="margin-top:13mm"></div>
+          <p class="eyebrow" style="margin-top:5mm">THE MATERIAL LANGUAGE</p>
+          <p class="body-en" style="margin-top:4mm">Considered fabrics. Careful finishing. Essential silhouettes with a distinct character.</p>
+        </div>
+      </div>
+      <div class="heritage-material">
+        <div class="label">MATERIAL / 工艺语言</div>
+        <p>精选面料，精细收边，<br>让经典经得起日常。<small>Considered fabrics. Careful finishing. Classics made to be lived in.</small></p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><strong>1989</strong><span>Founded in Naples<br>品牌于那不勒斯创立</span></div>
+        <div class="timeline-item"><strong>Today</strong><span>Led by designer YANG<br>由华人设计师 YANG 执掌</span></div>
+        <div class="timeline-item"><strong>Next</strong><span>Four lines, one world<br>四条产品线，一个品牌世界</span></div>
+      </div>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · NAPOLI · 1989</span><span class="page-no">03</span></div>
+  </section>
+
+  <!-- 04 Product architecture -->
+  <section class="page dark lines bleed">
+    <div class="topline"><span class="section-index">03 / 产品世界</span><div class="rule"></div><span class="en">ONE WORLD</span></div>
+    <div class="section-label"><p class="eyebrow">THE LAMURA PORTFOLIO</p></div>
+    <h2>四条产品线，<br>一个完整的衣橱宇宙。</h2>
+    <span class="en">Four lines, one world.</span>
+    <div class="line-list">
+      <div class="line-card"><div class="num">01</div><div><h3>LAMURA</h3><p>经典主线。以克制、优雅与耐穿的结构，构筑品牌的核心衣橱。</p><span class="tag">THE CLASSIC CORE · 经典主线</span></div></div>
+      <div class="line-card"><div class="num">02</div><div><h3>lamura by LAMURA</h3><p>高定手工坊。以精湛工艺与独特触感，承载品牌的定制精神。</p><span class="tag">HAUTE-COUTURE ATELIER · 高定手工坊</span></div></div>
+      <div class="line-card"><div class="num">03</div><div><h3>LAMURA pairs</h3><p>休闲运动系列。以更轻盈的方式，连接城市节奏与日常生活。</p><span class="tag">CASUAL SPORT · 休闲运动</span></div></div>
+      <div class="line-card"><div class="num">04</div><div><h3>RARA</h3><p>复古牛仔支线。以旧日质感与自由精神，打开另一种穿衣语气。</p><span class="tag">VINTAGE DENIM · 复古牛仔</span></div></div>
+    </div>
+    <div class="quote"><p>“经典不必大声，<br>它只需要被一次次穿上。”</p><span class="en">Classics do not need to announce themselves.<br>They are revealed by being lived in.</span></div>
+    <div class="footer"><span class="mark">LAMURA · THE BRAND UNIVERSE</span><span class="page-no">04</span></div>
+  </section>
+
+  <!-- 05 Collection cover -->
+  <section class="page collection-cover bleed">
+    <div class="photo"><img src="assets/london-371.jpg" alt="LAMURA SS27 collection, soft white silhouettes"></div>
+    <div class="topline"><span class="en">LONDON FASHION WEEK · SS27</span><div class="rule"></div><span class="section-index">04 / 系列</span></div>
+    <div class="copy">
+      <p class="eyebrow">LAMURA SPRING / SUMMER 2027</p>
+      <h1>爱的箴言</h1>
+      <p class="sub">Proverbs of Love <span style="color:#c9c3b9">/ Proverbios del Amor</span></p>
+      <div class="credit"><span>CREATIVE DIRECTION</span><strong>YANG × ZHENYAN CC</strong></div>
+    </div>
+    <div class="vertical">A LOVE LETTER TO FREEDOM · 一封写给自由的情书</div>
+    <div class="footer" style="color:rgba(255,255,255,.8)"><span class="mark">LAMURA · SS27</span><span class="page-no" style="color:#d9d3ca">05</span></div>
+  </section>
+
+  <!-- 06 Collection story -->
+  <section class="page story">
+    <div class="inner">
+      <div class="topline"><span class="section-index">04 / 系列叙事</span><div class="rule"></div><span class="en">THE COLLECTION</span></div>
+      <div class="story-grid">
+        <div class="story-copy">
+          <p class="eyebrow">A POETIC NARRATIVE</p>
+          <h2>一封<br>写给自由的情书。</h2>
+          <span class="en">A love letter to freedom.</span>
+          <p class="body-cn">本季系列由华人设计师 YANG 携侄女 ZHENYAN CC 联合主创演绎。成熟的少女告别荒芜盛夏，奔赴自由，追寻水母般的自由之心。这场温柔的寻觅之旅，最终沉淀为细腻质朴的灵感，藏于隽永古老的东方情书之中。</p>
+          <p class="body-en">Helmed by Chinese designer YANG and co-created with ZHENYAN CC, SS27 follows a mature young woman leaving the desolate wilderness of midsummer behind, seeking the free-spirited heart of a jellyfish. Her search for freedom becomes a delicate inspiration, held within the timeless romance of ancient Eastern love letters.</p>
+        </div>
+        <div>
+          <figure class="photo story-photo-main"><img src="assets/london-372.jpg" alt="LAMURA SS27 model in a pale dress"><figcaption>Freedom takes shape / 自由成形</figcaption></figure>
+          <div class="story-secondary">
+            <figure class="photo"><img src="assets/london-373.jpg" alt="LAMURA SS27 model in a dark wide-trouser look"></figure>
+            <figure class="photo"><img src="assets/london-369.jpg" alt="LAMURA SS27 dark fabric detail"></figure>
+          </div>
+        </div>
+      </div>
+      <div class="story-quote">“将美好和热爱，贯穿生活。”<small>Ten looks · love and simplicity · everyday devotion</small></div>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · PROVERBS OF LOVE</span><span class="page-no">06</span></div>
+  </section>
+
+  <!-- 07 Details -->
+  <section class="page details">
+    <div class="inner">
+      <div class="topline"><span class="section-index">04 / 系列细节</span><div class="rule"></div><span class="en">A LANGUAGE OF DETAILS</span></div>
+      <div class="details-grid">
+        <figure class="photo"><img src="assets/london-368.jpg" alt="LAMURA SS27 pleated white skirt detail"><figcaption>Pleats / 褶</figcaption></figure>
+        <figure class="photo"><img src="assets/london-369.jpg" alt="LAMURA SS27 gathered dark fabric detail"><figcaption>Layers / 层</figcaption></figure>
+      </div>
+      <div class="details-copy">
+        <div><h2>爱的语言，<br>在细节里。</h2><span class="en">Love, in its simplest form.</span></div>
+        <div><p class="body-cn">系列以简约纯粹的设计语言诠释爱与朴素。十套造型在开放体积与流动线条之间找到平衡，以黑白、轻盈的层次和细腻的触感，回应身体的自由。</p><p class="body-en" style="margin-top:4mm">Refined lines and a tender sensibility interpret love and simplicity. Ten looks balance open volumes, flowing silhouettes and delicate layers, allowing the body to move freely.</p></div>
+      </div>
+      <div class="details-tag"><span>PLEATS</span><span>LAYERS</span><span>BLACK &amp; WHITE</span><span>IN MOTION</span></div>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · SS27 / DETAILS</span><span class="page-no">07</span></div>
+  </section>
+
+  <!-- 08 Runway and designer -->
+  <section class="page runway">
+    <div class="inner">
+      <div class="topline"><span class="section-index">05 / 伦敦现场</span><div class="rule"></div><span class="en">THE SHOW</span></div>
+      <div class="runway-intro">
+        <div><p class="eyebrow">LONDON FASHION WEEK</p><h2>在伦敦，<br><span>让自由走上秀场。</span></h2><span class="en">On the runway, in London.</span></div>
+        <p class="body-en light runway-copy">The collection comes to life between the rhythm of footsteps and the gaze of the audience. A study in movement, presence and quiet confidence.</p>
+      </div>
+      <div class="runway-grid">
+        <figure class="photo"><img src="assets/london-376.jpg" alt="LAMURA SS27 models walking through the show venue"><figcaption>Models in line / 步伐之间</figcaption></figure>
+        <figure class="photo"><img src="assets/london-377.jpg" alt="LAMURA SS27 runway view"><figcaption>LAMURA · SS27</figcaption></figure>
+      </div>
+      <div class="credit"><span>CREATIVE DIRECTION · YANG × ZHENYAN CC</span><span>LONDON / SS27</span></div>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · LONDON FASHION WEEK SS27</span><span class="page-no">08</span></div>
+  </section>
+
+  <!-- 09 Designer and philosophy -->
+  <section class="page designer">
+    <div class="inner">
+      <div class="topline"><span class="section-index">06 / 设计师</span><div class="rule"></div><span class="en">THE DESIGNER</span></div>
+      <div class="designer-grid">
+        <figure class="photo designer-photo"><img src="assets/london-375.jpg" alt="Designer YANG at the LAMURA runway in London"><figcaption>YANG · ON THE RUNWAY</figcaption></figure>
+        <div class="designer-copy">
+          <p class="eyebrow">LEADING LAMURA</p>
+          <h2>YANG</h2>
+          <p class="role">Chinese designer / 华人设计师</p>
+          <p class="body-cn">如今，LAMURA 由华人设计师 YANG 执掌。其设计将品牌源自家族制衣传统的根基，与当代人对自由、简洁和真诚的渴望连接起来。</p>
+          <p class="body-en">Today, LAMURA is led by Chinese designer YANG. The designer connects the brand's roots in a family tradition of garment-making with a contemporary desire for freedom, simplicity and sincere expression.</p>
+          <div class="portfolio-title">四线一世界。<span>FOUR LINES, ONE WORLD</span></div>
+        </div>
+      </div>
+      <div class="designer-note">“衣服不是被观看的，<br>而是被生活穿过的。”<br><span style="font-family:var(--sans);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Clothes are not looked at. They are lived in.</span></div>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · YANG / THE DESIGNER</span><span class="page-no">09</span></div>
+  </section>
+
+  <!-- 10 Closing and contact -->
+  <section class="page closing bleed">
+    <div class="closing-visual"><img src="assets/brand-closing.jpg" alt="LAMURA garment detail"></div>
+    <div class="topline"><span class="section-index">07 / 联系</span><div class="rule"></div><span class="en">LET’S BEGIN</span></div>
+    <div class="closing-copy">
+      <p class="eyebrow">CLASSICI DA VIVERE</p>
+      <h2>把经典穿进<br>自己的故事。</h2>
+      <span class="en">Make the classics part of your own story.</span>
+      <div class="closing-rule"></div>
+      <div class="contact-grid">
+        <div><span class="label">WEBSITE / 官网</span><span class="value"><a href="https://lamuraitalia.com/">lamuraitalia.com</a></span></div>
+        <div><span class="label">EMAIL / 邮箱</span><span class="value"><a href="mailto:LAMURA@126.com">LAMURA@126.com</a></span></div>
+        <div><span class="label">PHONE / 电话</span><span class="value">+39 324 286 6461</span></div>
+        <div><span class="label">STUDIO / 地址</span><span class="value">Via Etruria 44, Scala G<br>Interno 8, Piano 3<br>00183 Roma, Italia</span></div>
+      </div>
+    </div>
+    <div class="footer"><span class="mark">LAMURA · NAPOLI · 1989</span><span class="page-no">10</span></div>
+  </section>
+</body>
+</html>
