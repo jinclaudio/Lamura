@@ -1,15 +1,10 @@
 import {useEffect, useRef, useState} from 'react';
 import {eventCopy} from './eventCopy';
+import {Designer} from './Designer';
+import {asset, EventImage} from './EventImage';
 import './events.css';
 
-const asset = (id, size = 1280) => `/images/events/london-ss27/${id}-${size}.webp`;
 const photoIds = [366, 371, 372, 373, 368, 369, 376, 377];
-const ratios = {366: [3, 2], 371: [2, 3], 372: [3512, 6240], 373: [2, 3], 368: [3512, 6240], 369: [2, 3], 375: [2, 3], 376: [2, 3], 377: [2, 3]};
-
-export function EventImage({id, alt, priority = false, sizes = '(max-width: 650px) 88vw, 44vw'}) {
-  const [width, height] = ratios[id];
-  return <img src={asset(id)} srcSet={`${asset(id, 640)} 640w, ${asset(id)} 1280w${id === 366 ? `, ${asset(id, 2000)} 2000w` : ''}`} sizes={sizes} alt={alt} width={width} height={height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async"/>;
-}
 
 export function EventPoster({lang}) {
   const t = eventCopy[lang];
@@ -56,6 +51,7 @@ export function Events({lang}) {
       <div className="event-section-intro" data-reveal><h2 id="event-runway-title">{t.runway}</h2><p>{t.runwayText}</p></div>
       <div className="event-runway-grid">{[376,377].map(id => <div key={id}>{photo(id)}</div>)}</div>
     </section>
+    <Designer lang={lang}/>
     <section className="event-closing shell"><p>{t.closing}</p><a className="text-link" href="/about#contact">{t.contact}</a></section>
     <dialog ref={dialog} className="event-dialog" aria-label={t.gallery} onCancel={e => {e.preventDefault();close();}} onClick={e => {if(e.target === e.currentTarget) close();}} onKeyDown={e => {if(e.key === 'ArrowRight'){e.preventDefault();move(1);} if(e.key === 'ArrowLeft'){e.preventDefault();move(-1);}}}>
       {active !== null && <div className="event-lightbox"><div className="event-lightbox-heading"><span>LAMURA · SS27</span><button className="daisy-btn" onClick={close} autoFocus>{t.close}</button></div><img src={asset(photoIds[active], photoIds[active] === 366 ? 2000 : 1280)} alt={t.alts[photoIds[active]]}/><div className="event-lightbox-controls"><button className="daisy-btn" onClick={() => move(-1)}>{t.previous}</button><span role="status" aria-live="polite">{active + 1} / {photoIds.length}</span><button className="daisy-btn" onClick={() => move(1)}>{t.next}</button></div></div>}

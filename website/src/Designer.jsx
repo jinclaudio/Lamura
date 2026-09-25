@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import {EventImage} from './Events';
+import {EventImage} from './EventImage';
 import {eventCopy} from './eventCopy';
 
 export function Designer({lang}) {

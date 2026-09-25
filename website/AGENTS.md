@@ -31,6 +31,8 @@ Designer section: user supplied the brand biography and identified YANG in image
 
 About page consistency: brand history and designer profile share a 1200px content grid, equal columns, 64px desktop section padding/gap, matching heading scale, and image frames capped at min(64svh,620px). Preserve photographs with object-fit:contain rather than cropping; do not let the older brand story expand to full ultrawide width while the designer remains narrow.
 
+Designer on the event page: the same Designer section also renders on /eventi, between the runway gallery and the closing section, so the profile is reachable from both pages. It keeps the shared 1200px two-column grid (equal columns, 64px gap) and the same 48px heading scale as /about and the other /eventi section headings; photo 375 remains its only portrait. EventImage and asset() live in src/EventImage.jsx so Events.jsx and Designer.jsx do not import each other.
+
 Mobile materials section: image, eyebrow, heading, body and collection link must share the same left edge and full available content width. Do not apply the former 85% image width or 10% text indent on mobile.
 
 Homepage order: London show poster first, forest brand hero second, then materials and collection. Use the solid light shared header above the opening poster and reserve mobile/desktop top padding for it.
